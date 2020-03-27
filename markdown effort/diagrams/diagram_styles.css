@@ -1,0 +1,84 @@
+.inline_r {
+	display: inline;
+}
+
+.diagram2x2 div {
+  padding:   8px;
+  text-align: center;
+}
+
+.diagram2x2 { 
+	display: grid;
+	grid-template-columns: 30px repeat(2, 40px) 30px;
+	grid-template-rows: 30px repeat(2, 40px) 30px;
+	grid-gap: 0px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 145px;
+}
+
+.diagram2x2_lg { 
+	display: grid;
+	grid-template-columns: 30px repeat(2, 80px) 30px;
+	grid-template-rows: 30px repeat(2, 80px) 30px;
+	grid-gap: 0px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 235px;
+}
+
+.diagram2x2 div:nth-child(1), .diagram2x2 div:nth-child(2), .diagram2x2 div:nth-child(3), .diagram2x2 div:nth-child(4) {
+	border-top: 2px solid pink;
+	border-left: 2px solid pink;
+}
+
+.diagram2x2 div:nth-child(2), .diagram2x2 div:nth-child(4) {
+	border-right: 2px solid pink;
+}
+
+.diagram2x2 div:nth-child(3), .diagram2x2 div:nth-child(4) {
+	border-bottom: 2px solid pink;
+}
+
+.diagram2x2 div:nth-child(5), .diagram2x2 div:nth-child(6), .diagram2x2 div:nth-child(7), .diagram2x2 div:nth-child(8) {
+	padding: 8px;
+	text-align: center;
+	margin: auto 0 auto 0;
+	font-size: 14px;
+	opacity: .75;
+}
+
+.palette {
+	margin-top: 3em;
+	width: 145px;
+	height: 140px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+.diagram2x2 div:nth-child(1) { grid-area: 2 / 2 / 3 / 3; }
+.diagram2x2 div:nth-child(2) { grid-area: 2 / 3 / 3 / 4; }
+.diagram2x2 div:nth-child(3) { grid-area: 3 / 2 / 4 / 3; }
+.diagram2x2 div:nth-child(4) { grid-area: 3 / 3 / 4 / 4; }
+.diagram2x2 div:nth-child(5) { grid-area: 1 / 2 / 2 / 4; }
+.diagram2x2 div:nth-child(6) { grid-area: 2 / 4 / 4 / 5; }
+.diagram2x2 div:nth-child(7) { grid-area: 4 / 2 / 5 / 4; }
+.diagram2x2 div:nth-child(8) { grid-area: 2 / 1 / 4 / 2; }
+
+
+</style>
+<script>
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function drag(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+  ev.target.appendChild(document.getElementById(data));
+}
